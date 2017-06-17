@@ -19,6 +19,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     let imagePicker = UIImagePickerController()
     
+    var classificationResults : [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -43,7 +45,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             try? imageData?.write(to: fileURL, options: [])
             
             visualRecognition.classify(imageFile: fileURL, success: { (classifiedImages) in
-                print(classifiedImages)
+                let classes = classifiedImages.images.first!.classifiers.first!.classes
+                
+                self.classificationResults = []
+                
+                for index in 1..<classes.count {
+                    self.classificationResults.append(classes[index].classification)
+                }
+                print(self.classificationResults)
+                
+                if self.classificationResults.contains("hotdog") {
+                    DispatchQueue.main.async {
+                        self.navigationItem.title = "Hotdog!"
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self.navigationItem.title = "Not Hotdog!"
+                    }
+                }
                 
             })
             
@@ -54,7 +73,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     @IBAction func cameraTapped(_ sender: UIBarButtonItem) {
         
-        imagePicker.sourceType = .savedPhotosAlbum
+        imagePicker.sourceType = .camera
         imagePicker.allowsEditing = false
         
         present(imagePicker, animated: true, completion: nil)
