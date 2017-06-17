@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,16 +22,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y47-b3-4Jv">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hotdogBackground" translatesAutoresizingMaskIntoConstraints="NO" id="0PP-Ld-1hX" userLabel="Static Hotdog Image">
+                                <rect key="frame" x="67" y="269" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="Otg-L2-Uuf"/>
+                                    <constraint firstAttribute="width" constant="240" id="ffv-tA-aoB"/>
+                                </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y47-b3-4Jv" userLabel="User Chosen Image">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.0" green="0.83234662467512344" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pnp-My-qbb">
+                                <rect key="frame" x="16" y="64" width="343" height="83"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="83" id="CRU-iq-UYc"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fh3-pQ-eCs">
+                                <rect key="frame" x="141" y="583" width="92" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="keyPath">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="shareTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OQg-0i-vQj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="y47-b3-4Jv" secondAttribute="trailing" id="AiZ-nb-szh"/>
+                            <constraint firstItem="Pnp-My-qbb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="TdW-1s-kYg"/>
+                            <constraint firstItem="0PP-Ld-1hX" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="clA-EK-55a"/>
+                            <constraint firstItem="0PP-Ld-1hX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="elW-8Z-B2i"/>
                             <constraint firstItem="y47-b3-4Jv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="g2Y-84-zIn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Pnp-My-qbb" secondAttribute="trailing" id="gpM-Ev-Vz4"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Pnp-My-qbb" secondAttribute="bottom" constant="520" id="h6M-MM-1w5"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="y47-b3-4Jv" secondAttribute="bottom" id="l2e-bW-Xzx"/>
                             <constraint firstItem="y47-b3-4Jv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="rfm-Fa-YJn"/>
+                            <constraint firstItem="Pnp-My-qbb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="zk9-wg-9n2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KjM-ka-plA">
@@ -43,6 +81,8 @@
                     <connections>
                         <outlet property="cameraButton" destination="qG1-xK-VgL" id="DhI-OX-N6H"/>
                         <outlet property="imageView" destination="y47-b3-4Jv" id="e86-dC-r7B"/>
+                        <outlet property="shareButton" destination="Fh3-pQ-eCs" id="4ug-GA-PZv"/>
+                        <outlet property="topBarImageView" destination="Pnp-My-qbb" id="7Gn-Mb-JVA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -54,9 +94,13 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vs2-xV-L9w" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sdl-0e-BWj">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="sdl-0e-BWj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                            <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -68,4 +112,7 @@
             <point key="canvasLocation" x="320.80000000000001" y="-545.57721139430294"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="hotdogBackground" width="63" height="47"/>
+    </resources>
 </document>
